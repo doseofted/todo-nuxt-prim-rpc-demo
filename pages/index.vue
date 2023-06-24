@@ -24,7 +24,7 @@ useHead({ title })
 const showCreationModal = ref(false)
 async function createNewTask(event: SubmitEvent & { target: HTMLFormElement }) {
   try {
-    await backend.todo.create(event.target)
+    await backend.todo.form.create(event.target)
     event.target.reset()
     showCreationModal.value = false
     page.value = 1
@@ -65,7 +65,7 @@ async function clearAll() {
       <div class="flex justify-between">
         <TodoPagination v-model:page="page" :count="pageCount" />
         <div class="btn-group justify-end">
-          <button class="btn tooltip" data-tip="Clear this page" @click="clearAll">
+          <button class="btn tooltip space-x-4" data-tip="Clear this page" @click="clearAll">
             <Icon name="ri:check-double-fill" size="1.5rem" />
             <span class="sr-only lg:not-sr-only">Clear</span>
           </button>

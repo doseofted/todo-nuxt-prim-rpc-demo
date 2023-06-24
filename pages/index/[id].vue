@@ -17,14 +17,20 @@ const showEditModal = ref(false)
 
 async function updateTask(event: SubmitEvent & { target: HTMLFormElement }) {
   try {
-    await backend.todo.update(event.target)
+    await backend.todo.form.update(event.target)
     event.target.reset()
     showEditModal.value = false
-    emit('updated')
     refresh()
+    emit('updated')
   } catch (error) {
     console.warn(error)
   }
+}
+
+async function removeAttachment() {
+  await backend.todo.update({ id: id.value, file: "delete" })
+  refresh()
+  emit('updated')
 }
 </script>
 
@@ -53,10 +59,16 @@ async function updateTask(event: SubmitEvent & { target: HTMLFormElement }) {
         <template v-if="page?.description">{{ page.description }}</template>
         <span v-else class="opacity-30"><em>(no description provided)</em></span>
       </p>
-      <button class="btn btn-block" @click="showEditModal = true">
-        <Icon name="ri:edit-2-fill" size="1.5rem" />
-        <span>Edit</span>
-      </button>
+      <div class="btn-group max-w-full">
+        <button class="btn" @click="showEditModal = true">
+          <Icon name="ri:edit-2-fill" size="1.5rem" />
+          <span>Edit</span>
+        </button>
+        <button class="btn tooltip" data-tip="Remove Attachment" @click="removeAttachment">
+          <Icon name="ri:file-shred-fill" size="1.5rem" />
+          <span class="sr-only">Remove Attachment</span>
+        </button>
+      </div>
     </div>
 
     <!-- Update existing task -->

@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 export default prisma;
 
 /** Number of sample records to create on first load */
-const generateCount = 15;
+const generateCount = 25;
 /** Create sample records to show on first load */
 async function populateNewDatabase() {
   const count = await prisma.todo.count();

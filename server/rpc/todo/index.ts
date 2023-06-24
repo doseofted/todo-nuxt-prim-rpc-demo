@@ -1,7 +1,7 @@
 import { z } from "zod";
 import prisma from "../prisma";
-import { todoItem, todoItemId, TodoItem, TodoItemId } from "./schema";
-import { removeFile, uploadFile } from "./uploads";
+import { todoItem, todoItemId, TodoItemId } from "./schema";
+import { removeFile, uploadFile } from "../uploads";
 
 export async function count() {
   return prisma.todo.count();
@@ -44,12 +44,8 @@ list.params = z.tuple([
 ]);
 list.rpc = true;
 
-export async function create(
-  todo: z.infer<typeof create.todo>
-): Promise<TodoItem>;
-export async function create(todo: HTMLFormElement): Promise<TodoItem>;
 /** Create a new todo item (optionally, upload as HTML form for convenience) */
-export async function create(todo: unknown) {
+export async function create(todo: z.infer<typeof create.todo>) {
   const allData = create.todo.parse(todo);
   const { file, ...rest } = allData;
   const photo = await uploadFile(file);
@@ -58,19 +54,27 @@ export async function create(todo: unknown) {
   return todoItem.parse(created);
 }
 create.todo = todoItem.omit({ id: true, photo: true }).extend({
-  file: z.instanceof(File).optional(),
+  file: z.instanceof(File).nullable().optional(),
 });
 create.rpc = true;
 
-export async function update(
-  todo: z.infer<typeof update.todo>
-): Promise<TodoItem>;
-export async function update(todo: HTMLFormElement): Promise<TodoItem>;
-/** Update and existing todo item (optionally, upload as HTML form for convenience) */
-export async function update(todo: unknown) {
+function createForm(form: HTMLFormElement) {
+  return create(form as any);
+}
+updateForm.rpc = true;
+
+/** Update an existing todo item */
+export async function update(todo: z.infer<typeof update.todo>) {
   const allData = update.todo.parse(todo);
   const { file, ...rest } = allData;
-  const photo = await uploadFile(file);
+  const found = await find(todo.id);
+  let photo = found.photo ?? null;
+  if (file === "delete") {
+    await removeFile(found.photo);
+    photo = null;
+  } else if (file instanceof File && file.size > 0) {
+    photo = await uploadFile(file);
+  }
   const data = { ...rest, photo };
   const created = await prisma.todo.update({ data, where: { id: data.id } });
   return todoItem.parse(created);
@@ -78,8 +82,15 @@ export async function update(todo: unknown) {
 update.todo = todoItem
   .omit({ photo: true })
   .extend({
-    file: z.instanceof(File).optional(),
+    file: z.instanceof(File).nullable().or(z.literal("delete")),
   })
   .partial()
   .required({ id: true });
 update.rpc = true;
+
+function updateForm(form: HTMLFormElement) {
+  return update(form as any);
+}
+updateForm.rpc = true;
+
+export const form = { create: createForm, update: updateForm };

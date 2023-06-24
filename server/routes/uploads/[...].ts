@@ -1,5 +1,5 @@
 import serveStatic from "serve-static";
-import { uploadLocation } from "../../rpc/todo/uploads";
+import { uploadLocation } from "../../rpc/uploads";
 import * as path from "node:path";
 
 // The Nuxt public folder is intended for static files available at build-time
