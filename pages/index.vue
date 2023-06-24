@@ -1,5 +1,5 @@
 <script setup lang="ts">
-tryOnMounted(() => backend.hello().then(console.log))
+tryOnMounted(() => console.log("Not implemented"))
 
 const route = useRoute();
 const router = useRouter()
@@ -7,8 +7,7 @@ const router = useRouter()
 const pageSize = 10
 const page = ref(1)
 const { data, refresh: refreshTodos } = useAsyncData(() => Promise.all([
-  backend.todo.list(page.value, pageSize),
-  backend.todo.count()
+  [{ name: "N/A", desription: "N/A", photo: "", id: -1 }], 0
 ]), { watch: [page] })
 const todoList = computed(() => data.value?.[0] ?? [])
 const count = computed(() => data.value?.[1] ?? 0)
@@ -24,7 +23,7 @@ useHead({ title })
 const showCreationModal = ref(false)
 async function createNewTask(event: SubmitEvent & { target: HTMLFormElement }) {
   try {
-    await backend.todo.form.create(event.target)
+    console.warn("Not implemented")
     event.target.reset()
     showCreationModal.value = false
     page.value = 1
@@ -35,12 +34,12 @@ async function createNewTask(event: SubmitEvent & { target: HTMLFormElement }) {
 }
 
 async function checkOffItem(id: number) {
-  await backend.todo.check(id)
+  console.warn("Not implemented")
   setTimeout(refreshTodos, 150)
 }
 
 async function clearAll() {
-  await Promise.all(todoList.value.map(todo => backend.todo.check(todo.id)))
+  await Promise.all(todoList.value.map(todo => console.warn("Not implemented")))
   setTimeout(refreshTodos, 150)
 }
 </script>

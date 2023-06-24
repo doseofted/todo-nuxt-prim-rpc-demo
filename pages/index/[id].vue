@@ -2,13 +2,15 @@
 const route = useRoute()
 const router = useRouter()
 const id = computed(() => Number(route.params.id))
-const { data: page, refresh } = useAsyncData(() => backend.todo.find(id.value), { watch: [id] })
+const { data: page, refresh } = useAsyncData(async () => ({
+  name: "N/A", description: "N/A", photo: ""
+}), { watch: [id] })
 
 const emit = defineEmits<{ checked: [boolean], updated: [] }>()
 
 async function checkOff(event: Event & { target: HTMLInputElement }) {
   if (!event.target.checked) { return }
-  await backend.todo.check(id.value)
+  console.warn("Not implemented")
   router.back()
   emit('checked', true)
 }
@@ -16,19 +18,15 @@ async function checkOff(event: Event & { target: HTMLInputElement }) {
 const showEditModal = ref(false)
 
 async function updateTask(event: SubmitEvent & { target: HTMLFormElement }) {
-  try {
-    await backend.todo.form.update(event.target)
-    event.target.reset()
-    showEditModal.value = false
-    refresh()
-    emit('updated')
-  } catch (error) {
-    console.warn(error)
-  }
+  console.warn("Not implemented")
+  event.target.reset()
+  showEditModal.value = false
+  refresh()
+  emit('updated')
 }
 
 async function removeAttachment() {
-  await backend.todo.update({ id: id.value, file: "delete" })
+  console.warn("Not implemented")
   refresh()
   emit('updated')
 }

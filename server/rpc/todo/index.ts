@@ -6,14 +6,12 @@ import { removeFile, uploadFile } from "../uploads";
 export async function count() {
   return prisma.todo.count();
 }
-count.rpc = true;
 
 export async function find(todoId: TodoItemId) {
   const id = todoItemId.parse(todoId);
   const found = await prisma.todo.findFirst({ where: { id } });
   return todoItem.parse(found);
 }
-find.rpc = true;
 
 /** Check off todo list item */
 export async function check(todoId: TodoItemId) {
@@ -22,7 +20,6 @@ export async function check(todoId: TodoItemId) {
   await removeFile(given.photo);
   return true;
 }
-check.rpc = true;
 
 /** List all todo items for a given page */
 export async function list(
@@ -42,7 +39,6 @@ list.params = z.tuple([
   z.number().min(1).default(1),
   z.number().min(1).max(100).default(5),
 ]);
-list.rpc = true;
 
 /** Create a new todo item (optionally, upload as HTML form for convenience) */
 export async function create(todo: z.infer<typeof create.todo>) {
@@ -56,12 +52,6 @@ export async function create(todo: z.infer<typeof create.todo>) {
 create.todo = todoItem.omit({ id: true, photo: true }).extend({
   file: z.instanceof(File).nullable().optional(),
 });
-create.rpc = true;
-
-function createForm(form: HTMLFormElement) {
-  return create(form as any);
-}
-updateForm.rpc = true;
 
 /** Update an existing todo item */
 export async function update(todo: z.infer<typeof update.todo>) {
@@ -86,11 +76,3 @@ update.todo = todoItem
   })
   .partial()
   .required({ id: true });
-update.rpc = true;
-
-function updateForm(form: HTMLFormElement) {
-  return update(form as any);
-}
-updateForm.rpc = true;
-
-export const form = { create: createForm, update: updateForm };
