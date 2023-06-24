@@ -32,7 +32,7 @@ async function updateTask(event: SubmitEvent & { target: HTMLFormElement }) {
   <div class="bg-white card overflow-hidden lg:card-side lg:flex-row-reverse">
 
     <!-- Attachment preview -->
-    <img v-if="page?.photo" class="lg:w-1/2 h-[30svh] object-contain bg-primary/20 p-2" :src="`/uploads/${page.photo}`">
+    <img v-if="page?.photo" class="lg:w-1/2 h-[50vh] object-contain bg-primary/20 p-2" :src="`/uploads/${page.photo}`">
     <div v-else class="lg:w-1/2 h-[30svh] bg-primary/20 flex items-center justify-center">
       <p class="opacity-30"><em>(no attachment)</em></p>
     </div>

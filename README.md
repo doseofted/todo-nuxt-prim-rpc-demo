@@ -1,3 +1,5 @@
+![Screenshot of todo app](./screenshot.png)
+
 # Todo List Demo with Prim+RPC / Nuxt
 
 <!-- NOTE: StackBlitz doesn't yet support Node 18, required for File usage -->
@@ -5,7 +7,7 @@
 
 This is a sample app built with [Nuxt](https://github.com/nuxt/nuxt), [Prisma](https://github.com/prisma/prisma), [Zod](https://github.com/colinhacks/zod), and [Prim+RPC](https://github.com/doseofted/prim-rpc).
 
-Prim+RPC functions can be found in [`./server/rpc/index.ts`](./server/rpc/index.ts) (they can be placed wherever you like). It is accessed over Nuxt's Nitro server in the route defined at [`./server/api/[...].ts`](./server/api/[...].ts). The client is configured in a composable defined at [`./composables/backend.ts`](./composables/backend.ts). This client is used throughout the app.
+Prim+RPC functions can be found in [`./server/rpc/index.ts`](./server/rpc/index.ts) (they can be placed wherever you like). It is accessed over Nuxt's Nitro server in the route defined at [`./server/api/[...].ts`](./server/api/[...].ts). The client is configured in a composable defined at [`./composables/backend.ts`](./composables/backend.ts). This client is named `backend` and is used throughout the app.
 
 This example can be started in development like so:
 
