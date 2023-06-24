@@ -21,14 +21,17 @@ This example can be started in development like so:
 # Copy environment example and set values
 cp .env.example .env
 # Install deps, prepare database, and start development
-npm install && npm run migrate:dev && npm run dev
-# Optionally, preview production-like build:
-npm run build && npm run preview
+npm install && npm run migrate:dev && npm run dev -- --open
 ```
 
 > **Note**: While Prim+RPC can work in all JavaScript environments, this demo makes use of Node 18+ APIs. You may set your Node version using tools like [`nvm`](https://github.com/nvm-sh/nvm).
 
 This is a simple demo and is not intended to be run in a production environment as-is.
+
+```zsh
+# Optionally, preview production-like build:
+npm run build && npm run preview
+```
 
 ## Structure
 
