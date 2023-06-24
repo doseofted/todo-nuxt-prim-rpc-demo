@@ -9,15 +9,21 @@ This is a simple todo app built with [Nuxt](https://github.com/nuxt/nuxt), [Pris
 
 ## Get Started
 
+First, clone the project:
+
+```zsh
+npx giget@latest gh:doseofted/todo-nuxt-prim-rpc-demo
+```
+
 This example can be started in development like so:
 
 ```zsh
 # Copy environment example and set values
 cp .env.example .env
 # Install deps, prepare database, and start development
-pnpm install && pnpm migrate:dev && pnpm dev
+npm install && npm run migrate:dev && npm run dev
 # Optionally, preview production-like build:
-pnpm build && pnpm preview
+npm run build && npm run preview
 ```
 
 > **Note**: While Prim+RPC can work in all JavaScript environments, this demo makes use of Node 18+ APIs. You may set your Node version using tools like [`nvm`](https://github.com/nvm-sh/nvm).
@@ -33,4 +39,4 @@ This is a simple demo and is not intended to be run in a production environment 
 
 ## Explore Prim+RPC
 
-A simple, bare minimum example that demonstrates [Prim+RPC](https://prim.doseofted.me/) usage with Nuxt can be found in the [fullstack example](https://github.com/doseofted/prim-rpc-examples/tree/main/fullstack-framework).
+A simple, bare bone example demonstrating [Prim+RPC](https://prim.doseofted.me/) usage with Nuxt can be found in the [fullstack example](https://github.com/doseofted/prim-rpc-examples/tree/main/fullstack-framework).
