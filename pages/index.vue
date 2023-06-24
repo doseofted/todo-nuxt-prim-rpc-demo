@@ -79,7 +79,8 @@ async function clearAll() {
     </div>
 
     <!-- Selected todo item -->
-    <TodoModal class="modal-bottom px-8" :open="route.path !== '/'" @update:open="!$event && router.back()">
+    <TodoModal class="modal-bottom max-w-screen-lg mx-auto" :open="route.path !== '/'"
+      @update:open="!$event && router.back()">
       <NuxtPage @checked="refreshTodos" @updated="refreshTodos" />
     </TodoModal>
 

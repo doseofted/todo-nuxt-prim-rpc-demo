@@ -23,6 +23,5 @@ logs
 !.env.example
 
 # database and upload related files (project-specific)
-prisma/dev.db*
-public/uploads/*
-!public/uploads/.gitkeep
+dev.db*
+data/*

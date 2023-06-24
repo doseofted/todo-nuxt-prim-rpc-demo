@@ -1,3 +1,7 @@
 {
-  "extends": "../.nuxt/tsconfig.server.json"
+  "extends": "../.nuxt/tsconfig.server.json",
+  "compilerOptions": {
+    // required for "serve-static" middleware used in @/server/routes/uploads/[...].ts
+    "allowSyntheticDefaultImports": true
+  }
 }

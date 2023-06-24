@@ -6,6 +6,13 @@
 
 <style>
 html {
-  font-size: 20px;
+  font-size: 16px;
+}
+
+/* theme("screens.lg") */
+@media (min-width: 1024px) {
+  html {
+    font-size: 20px;
+  }
 }
 </style>

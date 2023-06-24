@@ -29,16 +29,17 @@ async function updateTask(event: SubmitEvent & { target: HTMLFormElement }) {
 </script>
 
 <template>
-  <div class="bg-white card overflow-hidden lg:card-side lg:flex-row-reverse">
+  <div class="bg-white overflow-hidden grid lg:grid-cols-2">
 
     <!-- Attachment preview -->
-    <img v-if="page?.photo" class="lg:w-1/2 h-[50vh] object-contain bg-primary/20 p-2" :src="`/uploads/${page.photo}`">
-    <div v-else class="lg:w-1/2 h-[30svh] bg-primary/20 flex items-center justify-center">
-      <p class="opacity-30"><em>(no attachment)</em></p>
+    <div class="h-64 lg:h-full bg-primary/20 flex relative items-center justify-center lg:order-2">
+      <img v-if="page?.photo" class="absolute w-full h-full inset-0 object-cover bg-primary/20"
+        :src="`/uploads/${page.photo}`">
+      <p v-else class="opacity-30"><em>(no attachment)</em></p>
     </div>
 
     <!-- Todo details -->
-    <div class="card-body space-y-4 lg:w-1/2">
+    <div class="card-body space-y-4 lg:order-1">
       <div class="flex gap-2 items-center">
         <label class="flex py-1 pr-2">
           <span class="sr-only">Delete</span>

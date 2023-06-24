@@ -4,9 +4,22 @@ import * as fs from "node:fs/promises";
 
 export const allowedPhotos = z.enum(["image/jpeg", "image/png", "image/gif"]);
 
-export const uploadLocation = path.resolve("./public/uploads");
+const importDir = path.parse(new URL(import.meta.url).pathname).dir;
+const relativeUploadLocation = "../../data/uploads/uploads";
+export const uploadLocation = path.join(importDir, relativeUploadLocation);
+
+async function createUploadLocation() {
+  if (await fs.stat(uploadLocation)) {
+    return;
+  }
+  await fs // NOTE: create "upload" folder inside upload location for URL prefix of static assets
+    .mkdir(uploadLocation, { recursive: true })
+    .then(() => console.log("Uploads created:", uploadLocation))
+    .catch(() => console.log("Todo uploads exists:", uploadLocation));
+}
 
 export async function uploadFile(file?: File) {
+  await createUploadLocation();
   const fileCanBeUploaded =
     file && file.size > 0 && allowedPhotos.parse(file.type) && file.name;
   if (!fileCanBeUploaded) {

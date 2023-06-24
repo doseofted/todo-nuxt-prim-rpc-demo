@@ -25,13 +25,15 @@
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@prisma/client": "4.16.1",
     "@types/node": "^18",
+    "@types/serve-static": "^1.15.2",
     "@types/ws": "^8.5.5",
     "@vueuse/core": "^10.2.0",
     "@vueuse/nuxt": "^10.2.0",
-    "daisyui": "^3.1.5",
+    "daisyui": "^3.1.6",
     "nuxt": "^3.5.3",
     "nuxt-icon": "^0.4.1",
     "prisma": "^4.16.1",
+    "serve-static": "^1.15.0",
     "ws": "^8.13.0",
     "zod": "^3.21.4"
   }
