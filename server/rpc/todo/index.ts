@@ -36,8 +36,8 @@ export async function list(
   return todoItem.array().parse(listed);
 }
 list.params = z.tuple([
-  z.number().min(1).default(1),
-  z.number().min(1).max(100).default(5),
+  z.coerce.number().min(1).default(1),
+  z.coerce.number().min(1).max(100).default(5),
 ]);
 
 /** Create a new todo item (optionally, upload as HTML form for convenience) */
