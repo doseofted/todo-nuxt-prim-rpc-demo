@@ -1,0 +1,35 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "packageManager": "pnpm@8.6.3",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "migrate:dev": "prisma migrate dev",
+    "migrate:generate": "prisma generate"
+  },
+  "devDependencies": {
+    "@doseofted/prim-rpc": "0.1.0-alpha.9",
+    "@doseofted/prim-rpc-plugins": "0.1.0-alpha.11",
+    "@doseofted/prim-rpc-tooling": "0.1.0-alpha.4",
+    "@faker-js/faker": "^8.0.2",
+    "@formkit/auto-animate": "^0.7.0",
+    "@headlessui/vue": "^1.7.14",
+    "@nuxt/devtools": "latest",
+    "@nuxtjs/tailwindcss": "^6.8.0",
+    "@prisma/client": "4.16.1",
+    "@types/node": "^18",
+    "@types/ws": "^8.5.5",
+    "@vueuse/core": "^10.2.0",
+    "@vueuse/nuxt": "^10.2.0",
+    "daisyui": "^3.1.5",
+    "nuxt": "^3.5.3",
+    "nuxt-icon": "^0.4.1",
+    "prisma": "^4.16.1",
+    "ws": "^8.13.0",
+    "zod": "^3.21.4"
+  }
+}
