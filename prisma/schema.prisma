@@ -8,7 +8,7 @@ generator client {
 datasource db {
   provider = "sqlite"
   // https://github.com/prisma/prisma/issues/9562#issuecomment-1242491767
-  url      = "file:./dev.db?connection_limit=1"
+  url      = env("DATABASE_URL")
 }
 
 model Todo {

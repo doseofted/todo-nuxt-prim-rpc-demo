@@ -66,7 +66,7 @@ export async function update(
   todo: z.infer<typeof update.todo>
 ): Promise<TodoItem>;
 export async function update(todo: HTMLFormElement): Promise<TodoItem>;
-/** Create a new todo item (optionally, upload as HTML form for convenience) */
+/** Update and existing todo item (optionally, upload as HTML form for convenience) */
 export async function update(todo: unknown) {
   const allData = update.todo.parse(todo);
   const { file, ...rest } = allData;

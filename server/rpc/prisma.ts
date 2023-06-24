@@ -21,4 +21,6 @@ async function populateNewDatabase() {
   }
 }
 
-void populateNewDatabase();
+if (process.env.NODE_ENV === "development") {
+  void populateNewDatabase();
+}
