@@ -35,7 +35,7 @@ npm run build && npm run preview
 
 ## Structure
 
-- Prim+RPC functions can be found in [`./server/rpc/index.ts`](./server/rpc/index.ts).
+- Prim+RPC functions can be found in [`./functions/index.ts`](./functions/index.ts).
 - Functions are accessed over Nuxt's [Nitro](https://github.com/unjs/nitro) server in the route defined at [`./server/api/[...].ts`](./server/api/[...].ts).
 - The client is configured in a composable defined at [`./composables/backend.ts`](./composables/backend.ts).
 - This client is named `backend` and is used [throughout the app](./pages/index.vue).
