@@ -2,7 +2,7 @@ import { createPrimServer } from "@doseofted/prim-rpc";
 import { defineH3PrimHandler } from "@doseofted/prim-rpc-plugins/h3";
 
 const prim = createPrimServer({
-  module: import("../rpc"),
+  module: import("../../functions"),
   prefix: "/api/prim",
 });
 
