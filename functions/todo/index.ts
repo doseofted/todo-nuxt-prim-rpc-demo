@@ -45,7 +45,9 @@ list.params = z.tuple([
 list.rpc = true;
 
 /** Create a new todo item (optionally, upload as HTML form for convenience) */
-export async function create(todo: z.infer<typeof create.todo>) {
+export async function create(
+  todo: HTMLFormElement | z.infer<typeof create.todo>
+) {
   const allData = create.todo.parse(todo);
   const { file, ...rest } = allData;
   const photo = await uploadFile(file);
@@ -58,16 +60,13 @@ create.todo = todoItem.omit({ id: true, photo: true }).extend({
 });
 create.rpc = true;
 
-function createForm(form: HTMLFormElement) {
-  return create(form as any);
-}
-createForm.rpc = true;
-
 /** Update an existing todo item */
-export async function update(todo: z.infer<typeof update.todo>) {
+export async function update(
+  todo: HTMLFormElement | z.infer<typeof update.todo>
+) {
   const allData = update.todo.parse(todo);
   const { file, ...rest } = allData;
-  const found = await find(todo.id);
+  const found = await find(allData.id);
   let photo = found.photo ?? null;
   if (file === "delete") {
     await removeFile(found.photo);
@@ -87,10 +86,3 @@ update.todo = todoItem
   .partial()
   .required({ id: true });
 update.rpc = true;
-
-function updateForm(form: HTMLFormElement) {
-  return update(form as any);
-}
-updateForm.rpc = true;
-
-export const form = { create: createForm, update: updateForm };

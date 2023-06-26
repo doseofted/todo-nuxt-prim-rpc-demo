@@ -19,7 +19,7 @@ const showEditModal = ref(false)
 
 async function updateTask(event: SubmitEvent & { target: HTMLFormElement }) {
   try {
-    await backend.todo.form.update(event.target)
+    await backend.todo.update(event.target)
     event.target.reset()
     showEditModal.value = false
     refresh()

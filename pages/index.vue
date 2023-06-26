@@ -24,7 +24,7 @@ useHead({ title })
 const showCreationModal = ref(false)
 async function createNewTask(event: SubmitEvent & { target: HTMLFormElement }) {
   try {
-    await backend.todo.form.create(event.target)
+    await backend.todo.create(event.target)
     event.target.reset()
     showCreationModal.value = false
     page.value = 1
