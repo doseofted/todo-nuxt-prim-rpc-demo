@@ -20,6 +20,7 @@ This example can be started in development like so:
 ```zsh
 # Copy environment example and set values
 cp .env.example .env
+echo "DATABASE_URL=\"file:$(pwd)/data/dev.db?connection_limit=1\"" >> .env
 # Install deps, prepare database, and start development
 npm install && npm run migrate:dev && npm run dev -- --open
 ```
