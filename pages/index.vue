@@ -7,7 +7,8 @@ const router = useRouter()
 const pageSize = 10
 const page = ref(1)
 const { data, refresh: refreshTodos } = useAsyncData(() => Promise.all([
-  [{ name: "N/A", desription: "N/A", photo: "", id: -1 }], 0
+  [{ name: "N/A", desription: "N/A", photo: "", id: -1 }],
+  0
 ]), { watch: [page] })
 const todoList = computed(() => data.value?.[0] ?? [])
 const count = computed(() => data.value?.[1] ?? 0)
