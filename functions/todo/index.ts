@@ -54,11 +54,6 @@ create.todo = todoItem.omit({ id: true, photo: true }).extend({
 });
 create.rpc = true;
 
-function createForm(form: HTMLFormElement) {
-  return create(form as any);
-}
-createForm.rpc = true;
-
 /** Update an existing todo item */
 export async function update(todo: z.infer<typeof update.todo>) {
   const allData = update.todo.parse(todo);
