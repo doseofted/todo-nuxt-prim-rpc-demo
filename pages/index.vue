@@ -1,5 +1,5 @@
 <script setup lang="ts">
-tryOnMounted(() => console.log("Not implemented"))
+tryOnMounted(() => console.warn("Not implemented"))
 
 const route = useRoute();
 const router = useRouter()
