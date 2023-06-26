@@ -18,15 +18,11 @@ async function checkOff(event: Event & { target: HTMLInputElement }) {
 const showEditModal = ref(false)
 
 async function updateTask(event: SubmitEvent & { target: HTMLFormElement }) {
-  try {
-    await backend.todo.update(event.target)
-    event.target.reset()
-    showEditModal.value = false
-    refresh()
-    emit('updated')
-  } catch (error) {
-    console.warn(error)
-  }
+  await backend.todo.update(event.target)
+  event.target.reset()
+  showEditModal.value = false
+  refresh()
+  emit('updated')
 }
 
 async function removeAttachment() {
