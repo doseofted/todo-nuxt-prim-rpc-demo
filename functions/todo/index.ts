@@ -52,6 +52,12 @@ export async function create(todo: z.infer<typeof create.todo>) {
 create.todo = todoItem.omit({ id: true, photo: true }).extend({
   file: z.instanceof(File).nullable().optional(),
 });
+create.rpc = true;
+
+function createForm(form: HTMLFormElement) {
+  return create(form as any);
+}
+createForm.rpc = true;
 
 /** Update an existing todo item */
 export async function update(todo: z.infer<typeof update.todo>) {
