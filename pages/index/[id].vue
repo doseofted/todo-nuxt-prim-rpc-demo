@@ -2,7 +2,9 @@
 const route = useRoute()
 const router = useRouter()
 const id = computed(() => Number(route.params.id))
-const { data: page, refresh } = useAsyncData(() => backend.todo.find(id.value), { watch: [id] })
+const { data: page, refresh } = useAsyncData(() =>
+  backend.todo.find(id.value),
+  { watch: [id] })
 
 const emit = defineEmits<{ checked: [boolean], updated: [] }>()
 
