@@ -61,7 +61,7 @@ create.rpc = true;
 function createForm(form: HTMLFormElement) {
   return create(form as any);
 }
-updateForm.rpc = true;
+createForm.rpc = true;
 
 /** Update an existing todo item */
 export async function update(todo: z.infer<typeof update.todo>) {

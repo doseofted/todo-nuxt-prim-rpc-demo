@@ -1,6 +1,7 @@
 {
   "name": "nuxt-app",
   "private": true,
+  "packageManager": "pnpm@8.6.4",
   "engines": {
     "node": ">=18.0.0"
   },
@@ -14,9 +15,9 @@
     "migrate:generate": "prisma generate"
   },
   "devDependencies": {
-    "@doseofted/prim-rpc": "0.1.0-alpha.9",
+    "@doseofted/prim-rpc": "0.1.0-alpha.10",
     "@doseofted/prim-rpc-plugins": "0.1.0-alpha.11",
-    "@doseofted/prim-rpc-tooling": "0.1.0-alpha.4",
+    "@doseofted/prim-rpc-tooling": "0.1.0-alpha.5",
     "@faker-js/faker": "^8.0.2",
     "@formkit/auto-animate": "^0.7.0",
     "@headlessui/vue": "^1.7.14",
