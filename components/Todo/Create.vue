@@ -2,7 +2,7 @@
 withDefaults(defineProps<{
   title?: string
   actionName?: string
-  defaults?: null | { name?: string, description?: string, id?: number, photo?: string | null }
+  defaults?: null | { name?: string, description?: string | null, id?: number, photo?: string | null }
 }>(), {
   title: 'New Task',
   actionName: 'Create',
@@ -25,7 +25,7 @@ const emit = defineEmits<{
       </label>
       <label class="space-y-2 col-span-2">
         <span>Description</span>
-        <textarea :value="defaults?.description" name="description" type="text"
+        <textarea :value="defaults?.description || undefined" name="description" type="text"
           class="textarea textarea-bordered w-full" />
       </label>
       <label class="space-y-2 col-span-2">
