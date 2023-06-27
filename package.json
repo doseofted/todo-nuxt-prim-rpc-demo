@@ -2,7 +2,9 @@
   "name": "todo-nuxt-prim-rpc-demo",
   "private": true,
   "license": "MIT",
+  "packageManager": "npm@9.7.2",
   "engines": {
+    "npm": ">=9.0.0",
     "node": ">=18.0.0"
   },
   "scripts": {
@@ -15,7 +17,7 @@
     "migrate:generate": "prisma generate"
   },
   "devDependencies": {
-    "@doseofted/prim-rpc": "0.1.0-alpha.12",
+    "@doseofted/prim-rpc": "0.1.0-alpha.13",
     "@doseofted/prim-rpc-plugins": "0.1.0-alpha.11",
     "@doseofted/prim-rpc-tooling": "0.1.0-alpha.5",
     "@faker-js/faker": "^8.0.2",
