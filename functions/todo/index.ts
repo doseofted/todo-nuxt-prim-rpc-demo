@@ -54,7 +54,6 @@ export async function create(
 create.todo = todoItem.omit({ id: true, photo: true }).extend({
   file: z.instanceof(File).nullable().optional(),
 });
-create.rpc = true;
 
 /** Update an existing todo item */
 export async function update(
